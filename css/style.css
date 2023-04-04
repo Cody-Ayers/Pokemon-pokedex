@@ -13,4 +13,5 @@ p {
   color: blue;
   border-style: dashed;
   border-width: 1px;
+  border-radius: 75%;
 }
