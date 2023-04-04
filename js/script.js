@@ -8,8 +8,21 @@ let pokemonList = [
   { name: "Girafarig", height: 1.5, type: ["Psychic", "Normal"] },
 ];
 
+//for loop to print name and height
+
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write(
-    "<p> " + pokemonList[i].name + " " + pokemonList[i].height + "</p>"
-  );
+  if (pokemonList[i].height > 1.0) {
+    document.write(
+      "<p>" +
+        pokemonList[i].name +
+        " " +
+        pokemonList[i].height +
+        "- Wow that's huge!",
+      "</p>"
+    );
+  } else {
+    document.write(
+      "<p>" + pokemonList[i].name + " " + pokemonList[i].height + "</p>"
+    );
+  }
 }
