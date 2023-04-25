@@ -21,7 +21,7 @@ p {
   border: none;
   background-color: brown;
   color: white;
-  padding: 12px 28px;
+  padding: 12px 12px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -30,7 +30,7 @@ p {
   cursor: pointer;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
-  width: 290px;
+  width: 295px;
 }
 
 /* Box Styling */
