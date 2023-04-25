@@ -15,3 +15,28 @@ p {
   border-width: 1px;
   border-radius: 75%;
 }
+
+/* button styling */
+.button-class {
+  border: none;
+  background-color: brown;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 5px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  width: 290px;
+}
+
+/* Box Styling */
+ul {
+  list-style: none;
+  border: 2px solid black;
+  padding: 4px 2px;
+  width: 300px;
+}
