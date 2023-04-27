@@ -4,13 +4,13 @@ body {
 
 h1 {
   font-weight: 900;
-  color: blueviolet;
+  color: red;
   text-align: center;
 }
 
 p {
   text-align: center;
-  color: blue;
+  color: red;
   border-style: dashed;
   border-width: 1px;
   border-radius: 75%;
