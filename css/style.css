@@ -84,7 +84,6 @@ p {
 
 .modal-close {
   float: inline-end;
-  -webkit-appearance: none;
   border: 0;
   background: none;
   color: #000000;
