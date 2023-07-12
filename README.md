@@ -21,7 +21,7 @@ This app allows users to:
 In addition to the languages stated above, I have also relied on the following:
 
 - Bootstrap
-- jQuerry
+- jQuery
 - Eslint
 
 ## API
