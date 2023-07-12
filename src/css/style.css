@@ -1,0 +1,47 @@
+body {
+  background-color: beige;
+}
+
+h1 {
+  font-weight: 900;
+  color: red;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: red;
+  border-style: dashed;
+  border-width: 1px;
+  border-radius: 75%;
+}
+
+.container {
+  padding: 25px;
+}
+
+/* button styling */
+.button-class {
+  border: none;
+  background-color: brown;
+  color: white;
+  padding: 12px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 5px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  width: 295px;
+}
+
+/* Box Styling */
+.pokemon-list {
+  margin: auto;
+  list-style: none;
+  border: 2px solid black;
+  padding: 4px 2px;
+  width: 300px;
+}
