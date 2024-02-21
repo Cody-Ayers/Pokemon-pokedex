@@ -18,11 +18,21 @@ This app allows users to:
 
 ## Project Languages
 
+<br>
+
 In addition to the languages stated above, I have also relied on the following:
 
 - Bootstrap
 - jQuery
 - Eslint
+
+## Deployed using:
+
+<br>
+
+I deployed my app using GitHub pages:
+
+(https://cody-ayers.github.io/Pokemon-pokedex/)
 
 ## API
 
