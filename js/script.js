@@ -37,18 +37,23 @@ let pokeDex = (function () {
     li.appendChild(button);
     list.appendChild(li);
 
-    // load sprite in background
+    // load HD artwork and type in background
     fetch(pokemon.detailsUrl)
       .then(r => r.json())
       .then(details => {
-        let sprite = details.sprites.front_default;
+        // use official HD artwork, fall back to sprite
+        let hdArt = details.sprites.other['official-artwork'].front_default;
+        let sprite = hdArt || details.sprites.front_default;
+
+        // apply type tint to card
+        let primaryType = details.types[0].type.name;
+        button.classList.add('card-' + primaryType);
+
         if (sprite) {
           let img = document.createElement('img');
           img.src = sprite;
           img.alt = pokemon.name;
-          img.onload = () => {
-            placeholder.replaceWith(img);
-          };
+          img.onload = () => placeholder.replaceWith(img);
         } else {
           placeholder.remove();
         }
@@ -78,7 +83,8 @@ let pokeDex = (function () {
     return fetch(item.detailsUrl)
       .then(r => r.json())
       .then(details => {
-        item.imageUrl = details.sprites.front_default;
+        let hdArt = details.sprites.other['official-artwork'].front_default;
+        item.imageUrl = hdArt || details.sprites.front_default;
         item.height   = details.height;
         item.weight   = details.weight;
         item.types    = details.types;
@@ -94,21 +100,21 @@ let pokeDex = (function () {
 
   /* ── Modal ── */
   function showModal(pokemon) {
-    let container = document.querySelector('#modal-container');
+    let container = document.querySelector('.poke-modal-overlay');
     container.innerHTML = '';
 
     let modal = document.createElement('div');
-    modal.classList.add('modal');
+    modal.classList.add('poke-modal');
 
     // header
     let header = document.createElement('div');
-    header.classList.add('modal-header');
+    header.classList.add('poke-modal-header');
 
     let title = document.createElement('h1');
     title.textContent = pokemon.name;
 
     let closeBtn = document.createElement('button');
-    closeBtn.classList.add('modal-close');
+    closeBtn.classList.add('poke-modal-close');
     closeBtn.innerHTML = '&times;';
     closeBtn.addEventListener('click', hideModal);
 
@@ -117,11 +123,11 @@ let pokeDex = (function () {
 
     // body
     let body = document.createElement('div');
-    body.classList.add('modal-body');
+    body.classList.add('poke-modal-body');
 
     // number
     let numEl = document.createElement('p');
-    numEl.classList.add('modal-number');
+    numEl.classList.add('poke-modal-number');
     numEl.textContent = '#' + String(pokemon.id).padStart(3, '0');
     body.appendChild(numEl);
 
@@ -130,14 +136,14 @@ let pokeDex = (function () {
       let img = document.createElement('img');
       img.src = pokemon.imageUrl;
       img.alt = pokemon.name;
-      img.classList.add('modal-sprite');
+      img.classList.add('poke-modal-sprite');
       body.appendChild(img);
     }
 
     // type badges
     if (pokemon.types && pokemon.types.length) {
       let typesDiv = document.createElement('div');
-      typesDiv.classList.add('modal-types');
+      typesDiv.classList.add('poke-modal-types');
       pokemon.types.forEach(t => {
         let badge = document.createElement('span');
         badge.classList.add('type-badge', 'type-' + t.type.name);
@@ -150,7 +156,7 @@ let pokeDex = (function () {
     // stats
     if (pokemon.stats && pokemon.stats.length) {
       let statsDiv = document.createElement('div');
-      statsDiv.classList.add('modal-stats');
+      statsDiv.classList.add('poke-modal-stats');
 
       let statLabels = { hp: 'HP', attack: 'ATK', defense: 'DEF', 'special-attack': 'SpATK', 'special-defense': 'SpDEF', speed: 'SPD' };
 
@@ -191,7 +197,7 @@ let pokeDex = (function () {
     // height + weight
     if (pokemon.height !== undefined) {
       let hw = document.createElement('p');
-      hw.classList.add('modal-height');
+      hw.classList.add('poke-modal-height');
       hw.textContent = `Height: ${(pokemon.height / 10).toFixed(1)} m · Weight: ${(pokemon.weight / 10).toFixed(1)} kg`;
       body.appendChild(hw);
     }
@@ -208,12 +214,12 @@ let pokeDex = (function () {
   }
 
   function hideModal() {
-    document.querySelector('#modal-container').classList.remove('is-visible');
+    document.querySelector('.poke-modal-overlay').classList.remove('is-visible');
   }
 
   // close on Escape
   window.addEventListener('keydown', e => {
-    let c = document.querySelector('#modal-container');
+    let c = document.querySelector('.poke-modal-overlay');
     if (e.key === 'Escape' && c && c.classList.contains('is-visible')) hideModal();
   });
 
